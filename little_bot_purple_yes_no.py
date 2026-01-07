@@ -37,4 +37,4 @@ while True:
     hummingbird.position_servo(SERVO_UP_DOWN, random.randint(60, 100))
     hummingbird.position_servo(SERVO_SIDE_TO_SIDE, random.randint(50, 95))
 
-    sleep(random.uniform(0.3, 0.9))
+    sleep(random.uniform(0.4, 0.9))
