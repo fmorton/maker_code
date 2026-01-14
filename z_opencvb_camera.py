@@ -21,5 +21,3 @@ cv.destroyAllWindows()
 print("Destroy Windows...Done")
 cv.waitKey(1)
 print("All Done")
-
-    
