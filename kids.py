@@ -9,5 +9,3 @@ finch = Finch("B")
 for i in range(25):
     finch.move(Constant.FORWARD, 25, 50)
     finch.turn("L", 90, 50)
-
-

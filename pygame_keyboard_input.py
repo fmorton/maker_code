@@ -6,7 +6,6 @@ import pygame
 os.environ["SDL_VIDEODRIVER"] = "dummy"
 
 
-
 pygame.init()
 screen = pygame.display.set_mode((800, 600))
 running = True
@@ -27,6 +26,6 @@ while running:
                 print("Spacebar released!")
 
     # Your other game logic and drawing code goes here
-    #pygame.display.flip()
+    # pygame.display.flip()
 
 pygame.quit()

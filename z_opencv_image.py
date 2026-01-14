@@ -1,6 +1,6 @@
 import cv2 as cv
 
-image = cv.imread('python.png', -1) # -1=unchanged 0=grayscale 1=color
+image = cv.imread("python.png", -1)  # -1=unchanged 0=grayscale 1=color
 
 if image is not None:
     print("Image loaded...")
@@ -23,5 +23,3 @@ if image is not None:
     cv.waitKey(1)
     cv.destroyAllWindows()
     cv.waitKey(1)
-
-

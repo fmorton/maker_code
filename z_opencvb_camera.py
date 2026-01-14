@@ -7,10 +7,12 @@ while True:
 
     cv.imshow("Video Display", frame)
 
-    cv.namedWindow('Video Display', cv.WINDOW_NORMAL)  # size must be specified or thonny hangs
-    cv.resizeWindow('Video Display', 640, 360)
+    cv.namedWindow(
+        "Video Display", cv.WINDOW_NORMAL
+    )  # size must be specified or thonny hangs
+    cv.resizeWindow("Video Display", 640, 360)
 
-    if cv.waitKey(1) & 0xFF == ord('q'):
+    if cv.waitKey(1) & 0xFF == ord("q"):
         break
 
 print("Release...")

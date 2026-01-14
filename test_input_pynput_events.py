@@ -6,16 +6,16 @@ while True:
 
     with keyboard.Events() as events:
         # Block at most one second to get an event
-        event = events.get(1.0) 
+        event = events.get(1.0)
         if event is None:
-            print('No key pressed within one second.')
+            print("No key pressed within one second.")
         else:
             # Check if the event is a key press and extract the character
             if isinstance(event, keyboard.Events.Press):
-                if hasattr(event.key, 'char'):
-                    print(f'Received character: {event.key.char}')
+                if hasattr(event.key, "char"):
+                    print(f"Received character: {event.key.char}")
                 else:
-                    print(f'Received special key: {event.key}')
+                    print(f"Received special key: {event.key}")
             elif isinstance(event, keyboard.Events.Release):
                 # Handle key release events if needed
                 pass

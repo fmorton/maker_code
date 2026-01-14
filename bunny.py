@@ -6,7 +6,6 @@ from time import sleep
 LIGHT_CUTOFF_LEVEL = 7
 
 
-
 def light_sensor_not_covered():
     print("NOT COVERED")
     bird.position_servo(1, 76)
@@ -22,6 +21,7 @@ def light_sensor_covered():
     sleep(random.uniform(0.1, 0.75))
 
     sleep(0.10)
+
 
 bird = Hummingbird("A")
 

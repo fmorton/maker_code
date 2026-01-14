@@ -11,7 +11,7 @@ while running:
         print("event is", event)
         if event.type == pygame.QUIT:
             running = False
-            
+
         # Check for KEYDOWN event
         if event.type == pygame.KEYDOWN:
             # Detect specific key press
@@ -24,6 +24,6 @@ while running:
                 running = False
 
     # Game logic and drawing (not directly related to input, but part of loop)
-    #screen.fill((0, 0, 0)) # Fill screen with black
-    #pygame.display.flip() # Update the display
+    # screen.fill((0, 0, 0)) # Fill screen with black
+    # pygame.display.flip() # Update the display
 print("DONE")

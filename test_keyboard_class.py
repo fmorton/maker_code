@@ -2,7 +2,8 @@ from pynput import keyboard
 import queue
 import time
 
-class Keyboard():
+
+class Keyboard:
     def process(self, key):
         self.keyboard_queue.put(key)
 
@@ -29,14 +30,22 @@ class Keyboard():
 
     def key(self):
         if self.is_key_available():
-            return(self.keyboard_queue.get())
+            return self.keyboard_queue.get()
 
         return None
+
 
 keyboard = Keyboard()
 
 while True:
     while (key := keyboard.key()) is not None:
-        print("Program running...", keyboard.keyboard_queue, "size:", keyboard.keyboard_queue.qsize(),"......", key)
+        print(
+            "Program running...",
+            keyboard.keyboard_queue,
+            "size:",
+            keyboard.keyboard_queue.qsize(),
+            "......",
+            key,
+        )
 
-    #time.sleep(0.25)
+    # time.sleep(0.25)

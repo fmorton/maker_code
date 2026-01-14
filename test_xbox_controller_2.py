@@ -27,14 +27,16 @@ pygame.display.set_caption("Pygame Joystick Test")
 running = True
 while running:
     print("Running....")
-    #pygame.event.pump()
+    # pygame.event.pump()
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
         elif event.type == pygame.JOYBUTTONDOWN:
             print(f"Joystick {event.instance_id} button {event.button} pressed")
         elif event.type == pygame.JOYAXISMOTION:
-            print(f"Joystick {event.instance_id} axis {event.axis} motion: {event.value}")
+            print(
+                f"Joystick {event.instance_id} axis {event.axis} motion: {event.value}"
+            )
         elif event.type == pygame.JOYHATMOTION:
             print(f"Joystick {event.instance_id} hat {event.hat} motion: {event.value}")
 
