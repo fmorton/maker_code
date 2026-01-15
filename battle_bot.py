@@ -10,7 +10,9 @@ hummingbird = HummingbirdDualMotorDriver("A")
 
 tasks = Tasks()
 
-tasks.create_task(driving(hummingbird))  # must be first task to wait for xbox controller
+tasks.create_task(
+    driving(hummingbird)
+)  # must be first task to wait for xbox controller
 tasks.create_task(weapons(hummingbird))
 tasks.create_task(bling(hummingbird))
 

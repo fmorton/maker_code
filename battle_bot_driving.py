@@ -4,60 +4,61 @@ import sys
 import time
 import os
 
-def get_joystick():
-    os.environ["SDL_VIDEODRIVER"] = "dummy"
 
-    pygame.init()
-    pygame.joystick.init()
+class XboxJoystick:
+    def __init__(self, wait_for_joystick_message="Waiting for Xbox Controller"):
+        self.connected = False
+        self.joystick = None
+        self.joystick_name = None
 
-    # Get the number of connected joysticks
-    joystick_count = pygame.joystick.get_count()
-    print(f"Number of joysticks: {joystick_count}")
+        os.environ["SDL_VIDEODRIVER"] = "dummy"
 
-    if joystick_count == 0:
-        print("No Joystick Available")
-        exit(200)
+        pygame.init()
+        pygame.joystick.init()
 
-    # Initialize and store joystick objects
-    joysticks = []
-    #for i in range(joystick_count):
-    joystick = pygame.joystick.Joystick(0)
-    joystick.init()
-    joysticks.append(joystick)
-    print(f"Initialized joystick: {joystick.get_name()}")
+        if wait_for_joystick_message:
+            while pygame.joystick.get_count() == 0:
+                print(wait_for_joystick_message)
+                time.sleep(1.0)
 
-    return joystick
+        if pygame.joystick.get_count() > 0:
+            self.joystick = pygame.joystick.Joystick(0)
+
+            self.joystick.init()
+
+            self.joystick_name = self.joystick.get_name()
+
+            self.connected = True
+
+
+def driving_button_pressed(instance_id, button):
+    print("Button Pressed:", button)
+
+
+def driving_joystick_moved(instance_id, axis, value):
+    if abs(value) < 0.2:
+        return
+
+    print("Joystick Axis:", axis, " Value:", value)
+
 
 async def driving(hummingbird):
+    running = True
 
-    #pygame.init()
-    #pygame.joystick.init()
+    joystick = XboxJoystick()
 
-    #while pygame.joystick.get_count() == 0:
-    #    print("Waiting for an xbox joystick")
-    #    time.sleep(0.5)
-
-    #joystick = pygame.joystick.Joystick(0)
-    joystick = get_joystick()
-
-    while True:
-        print("driving active")
-
+    while running:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 running = False
             elif event.type == pygame.JOYBUTTONDOWN:
-                print(f"Joystick {event.instance_id} button {event.button} pressed")
+                driving_button_pressed(event.instance_id, event.button)
             elif event.type == pygame.JOYAXISMOTION:
-                print(
-                    f"Joystick {event.instance_id} axis {event.axis} motion: {event.value}"
-                )
-            elif event.type == pygame.JOYHATMOTION:
-                print(f"Joystick {event.instance_id} hat {event.hat} motion: {event.value}")
+                driving_joystick_moved(event.instance_id, event.axis, event.value)
 
-        #hummingbird.move(50, 50)
-        #time.sleep(0.5)
+        # hummingbird.move(50, 50)
+        # time.sleep(0.5)
         ## hummingbird.move_right_motor(0)
-        #hummingbird.move(0, 0)
+        # hummingbird.move(0, 0)
 
         await Tasks.yield_task(0.005)
