@@ -1,8 +1,8 @@
 from robot.tasks import Tasks
 
 
-async def bling(bird):
+async def extras(hummingbird, joystick):
     while True:
-        print("bling active")
+        print("Extras Active")
 
         await Tasks.yield_task(4.5)
