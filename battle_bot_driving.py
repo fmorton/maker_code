@@ -1,11 +1,12 @@
-from robot.tasks import Tasks
+import asyncio
 import pygame
-import sys
+
+from robot.tasks import Tasks
 from time import sleep
 
 
 def driving_button_pressed(hummingbird, instance_id, button):
-    print("Driving Button Pressed:", button)
+    pass
 
 
 def driving_joystick_moved(hummingbird, instance_id, axis, value, joystick_minimum):
@@ -19,15 +20,17 @@ def driving_joystick_moved(hummingbird, instance_id, axis, value, joystick_minim
     # hummingbird.move(0, 0)
 
 
-async def driving(hummingbird, joystick, joystick_minimum=0.25):
+async def driving(driving_queue, hummingbird, joystick, joystick_minimum=0.25):
     running = True
 
     while running:
-        for event in pygame.event.get():
+        try:
+            event = driving_queue.get_nowait()
+
             if event.type == pygame.QUIT:
                 running = False
-            # elif event.type == pygame.JOYBUTTONDOWN:
-            #    driving_button_pressed(hummingbird, event.instance_id, event.button)
+            elif event.type == pygame.JOYBUTTONDOWN:
+                driving_button_pressed(hummingbird, event.instance_id, event.button)
             elif event.type == pygame.JOYAXISMOTION:
                 driving_joystick_moved(
                     hummingbird,
@@ -36,5 +39,7 @@ async def driving(hummingbird, joystick, joystick_minimum=0.25):
                     event.value,
                     joystick_minimum,
                 )
+        except asyncio.QueueEmpty:
+            pass
 
         await Tasks.yield_task(0.0)
