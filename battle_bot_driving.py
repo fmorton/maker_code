@@ -23,7 +23,7 @@ def driving_joystick_moved(hummingbird, instance_id, axis, value, joystick_minim
             speed = 0
 
         print("DEBUG: DRIVING================================================================================================",speed)
-        #hummingbird.move(speed, speed)
+        hummingbird.move(speed, speed)
         #sleep(0.25)
         #hummingbird.move(0, 0)
 
