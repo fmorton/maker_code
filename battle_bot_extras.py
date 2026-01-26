@@ -9,7 +9,7 @@ def extras_button_pressed(hummingbird, instance_id, button):
         print("'A' Button Pressed")
 
 
-async def extras(extras_queue, hummingbird, joystick):
+async def extras(hummingbird, joystick, extras_queue):
     running = True
 
     while running:

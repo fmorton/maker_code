@@ -9,7 +9,7 @@ def weapons_button_pressed(hummingbird, instance_id, button):
         print("Shoot")
 
 
-async def weapons(weapons_queue, hummingbird, joystick):
+async def weapons(hummingbird, joystick, weapons_queue):
     running = True
 
     while running:

@@ -1,9 +1,11 @@
 from robot.tasks import Tasks
 import random
 
-class State():
+
+class State:
     def __init__(self):
         self.random_number = 0
+
 
 async def task_1(state):
     while True:
@@ -28,4 +30,3 @@ tasks.create_task(task_1(state))
 tasks.create_task(task_2(state))
 
 tasks.run()
-

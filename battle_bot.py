@@ -21,9 +21,9 @@ extras_queue = asyncio.Queue()
 
 tasks = Tasks()
 
-tasks.create_task(event_manager(driving_queue, weapons_queue, extras_queue))
-tasks.create_task(driving(driving_queue, hummingbird, joystick))
-tasks.create_task(weapons(weapons_queue, hummingbird, joystick))
-tasks.create_task(extras(extras_queue, hummingbird, joystick))
+tasks.create_task(event_manager(joystick, driving_queue, weapons_queue, extras_queue))
+tasks.create_task(driving(hummingbird, joystick, driving_queue))
+tasks.create_task(weapons(hummingbird, joystick, weapons_queue))
+tasks.create_task(extras(hummingbird, joystick, extras_queue))
 
 tasks.run()
