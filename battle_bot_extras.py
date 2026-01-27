@@ -1,26 +1,15 @@
-import asyncio
-import pygame
-
 from robot.tasks import Tasks
+from robot.xbox_joystick import XboxJoystick
 
 
-def extras_button_pressed(hummingbird, instance_id, button):
-    if button == 0:
-        print("'A' Button Pressed")
-
-
-async def extras(hummingbird, joystick, extras_queue):
+async def extras(hummingbird, joystick):
     running = True
 
     while running:
-        try:
-            event = extras_queue.get_nowait()
+        if joystick.state.button_down_milliseconds(XboxJoystick.BUTTON_A):
+            print(
+                "Extra button A",
+                joystick.state.button_down_milliseconds(XboxJoystick.BUTTON_A),
+            )
 
-            if event.type == pygame.QUIT:
-                running = False
-            elif event.type == pygame.JOYBUTTONDOWN:
-                extras_button_pressed(hummingbird, event.instance_id, event.button)
-        except asyncio.QueueEmpty:
-            pass
-
-        await Tasks.yield_task(0.0)
+        await Tasks.yield_task(XboxJoystick.EVENT_LOOP_DELAY)

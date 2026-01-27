@@ -1,22 +1,17 @@
 import pygame
 
-from time import sleep
 from robot.tasks import Tasks
+from robot.xbox_joystick import XboxJoystick
 
 
-async def event_manager(joystick, driving_queue, weapons_queue, extras_queue):
+async def event_manager(joystick, debugging=False):
     running = True
-    debugging = True
 
     while running:
         for event in pygame.event.get():
             joystick.state.event(event, debugging)
 
-            await driving_queue.put(event)
-            await extras_queue.put(event)
-            await weapons_queue.put(event)
-
             if event.type == pygame.QUIT:
                 running = False
 
-        await Tasks.yield_task(0.0)
+        await Tasks.yield_task(XboxJoystick.EVENT_LOOP_DELAY)

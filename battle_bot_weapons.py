@@ -1,26 +1,15 @@
-import asyncio
-import pygame
-
 from robot.tasks import Tasks
+from robot.xbox_joystick import XboxJoystick
 
 
-def weapons_button_pressed(hummingbird, instance_id, button):
-    if button in [9, 10]:  # right/left trigger
-        print("Shoot")
-
-
-async def weapons(hummingbird, joystick, weapons_queue):
+async def weapons(hummingbird, joystick):
     running = True
 
     while running:
-        try:
-            event = weapons_queue.get_nowait()
+        if joystick.state.left_trigger():
+            print("Shoot left trigger", joystick.state.left_trigger())
 
-            if event.type == pygame.QUIT:
-                running = False
-            elif event.type == pygame.JOYBUTTONDOWN:
-                weapons_button_pressed(hummingbird, event.instance_id, event.button)
-        except asyncio.QueueEmpty:
-            pass
+        if joystick.state.right_trigger():
+            print("Shoot right trigger", joystick.state.right_trigger())
 
-        await Tasks.yield_task(0.0)
+        await Tasks.yield_task(XboxJoystick.EVENT_LOOP_DELAY)
