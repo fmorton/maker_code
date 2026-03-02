@@ -43,7 +43,7 @@ def robot(joystick):
         green = random.randint(0, 100)
         blue = random.randint(0, 100)
 
-        finch.tail(2, red, blue, green) 
+        finch.tail(2, red, blue, green)
         finch.tail(3, red, blue, green)
     else:
         finch.tail(2, 0, 0, 0)

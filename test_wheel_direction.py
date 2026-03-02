@@ -8,6 +8,6 @@ right_speed = 30
 
 hummingbird.move(left_speed, right_speed)
 
-sleep(.5)
+sleep(0.5)
 
 hummingbird.move(0, 0)
