@@ -5,10 +5,8 @@ from robot.xbox_joystick import XboxJoystick
 from time import sleep
 
 
-async def event_manager(joystick, debugging=False):
+async def events(joystick, debugging=False):
     running = True
-
-    clock = pygame.time.Clock()
 
     while running:
         for event in pygame.event.get():
@@ -30,6 +28,6 @@ async def event_manager(joystick, debugging=False):
 
             joystick.state.print_state_string(extra_state_string)
 
-        clock.tick(20)
+        joystick.tick(30)
 
         await Tasks.yield_task(XboxJoystick.EVENT_LOOP_DELAY)
