@@ -14,7 +14,7 @@ print("Battlebot Ready")
 
 tasks = Tasks()
 
-tasks.create_task(event_manager(joystick))
+tasks.create_task(event_manager(joystick, False))
 tasks.create_task(driving(hummingbird, joystick))
 tasks.create_task(weapons(hummingbird, joystick))
 tasks.create_task(extras(hummingbird, joystick))
