@@ -13,9 +13,16 @@ def robot(joystick):
     # --------------------------------------------------------------------------------------------------------------------------
     #  driving
     # --------------------------------------------------------------------------------------------------------------------------
+    FACTOR = 0.75
+
     left_speed = right_speed = round(-joystick.state.left_y() * 100, 2) + 0.0
 
-    # add turning
+    speed_multiplier = 1.0 - (abs(joystick.state.right_x()) * FACTOR)
+
+    if joystick.state.right_x() >= 0.0:
+        right_speed = right_speed * speed_multiplier  # turn right (slower right wheel)
+    else:
+        left_speed = left_speed * speed_multiplier  # turn left (slower left wheel)
 
     hummingbird.move(left_speed, right_speed)
 
@@ -33,6 +40,7 @@ def robot(joystick):
     extra_state_string += f"{right_weapon:8.2f}"
     extra_state_string += f"{left_speed:8.2f}"
     extra_state_string += f"{right_speed:8.2f}"
+    extra_state_string += f"{speed_multiplier:8.2f}"
 
     joystick.state.print_state_string(extra_state_string)
 
@@ -43,7 +51,5 @@ def robot(joystick):
 
 hummingbird = HummingbirdDualMotorDriver("A")
 joystick = XboxJoystick().connect()
-
-print("Battlebot Ready")
 
 joystick.run(robot)
