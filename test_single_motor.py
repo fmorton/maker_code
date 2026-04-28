@@ -1,27 +1,22 @@
+from robot.hummingbird import Hummingbird
+from robot.hummingbird_l298n_dual_motor_driver import HummingbirdL298nDualMotorDriver
 from time import sleep
 
-from robot.hummingbird import Hummingbird
+hummingbird = Hummingbird()
+hummingbird_driver = HummingbirdL298nDualMotorDriver(hummingbird)
 
-bird = Hummingbird()
+hummingbird_driver.move_left_motor(25)
+sleep(1.0)
 
-print("1")
-bird.led(1, 100)
-bird.tri_led(1, 0, 0, 100)
-bird.tri_led(2, 0, 0, 100)
-sleep(1)
+hummingbird_driver.move_left_motor(-25)
+sleep(1.0)
 
-print("2")
-bird.led(1, 100)
-bird.tri_led(1, 0, 100, 0)
-bird.tri_led(2, 0, 100, 0)
-sleep(1)
+hummingbird_driver.stop()
 
-print("3")
-bird.led(1, 0)
-bird.tri_led(1, 0, 100, 100)
-bird.tri_led(2, 0, 100, 100)
+hummingbird_driver.move_right_motor(25)
+sleep(1.0)
 
-print("4")
-bird.led(1, 0)
-bird.tri_led(1, 0, 0, 0)
-bird.tri_led(2, 0, 0, 0)
+hummingbird_driver.move_right_motor(-25)
+sleep(1.0)
+
+hummingbird_driver.stop()
