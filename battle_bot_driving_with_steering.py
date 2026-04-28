@@ -15,19 +15,19 @@ async def driving(hummingbird, joystick):
         FACTOR = 0.75
         VOLTAGE_FACTOR = 0.25
 
-        left_speed = right_speed = (round(-joystick.state.left_y() * 100, 2) + 0.0) * 0.25
+        left_speed = right_speed = round(-joystick.state.left_y() * 100, 2) + 0.0
 
-        # direction from joystick.state.right_x()
-        #speed_multiplier = 1.0 - (abs(joystick.state.right_x()) * FACTOR)
+        speed_multiplier = 1.0 - (abs(joystick.state.right_x()) * FACTOR)
 
-        #left_speed = left_speed * VOLTAGE_FACTOR
-        #right_speed = right_speed * VOLTAGE_FACTOR
+        left_speed = left_speed * VOLTAGE_FACTOR
+        right_speed = right_speed * VOLTAGE_FACTOR
 
-        #if joystick.state.right_x() >= 0.0:
-        #    right_speed = right_speed * speed_multiplier  # turn right (slower right wheel)
-        #else:
-        #    left_speed = left_speed * speed_multiplier  # turn left (slower left wheel)
+        if joystick.state.right_x() >= 0.0:
+            right_speed = right_speed * speed_multiplier  # turn right (slower right wheel)
+        else:
+            left_speed = left_speed * speed_multiplier  # turn left (slower left wheel)
 
         hummingbird_driver.move(left_speed, right_speed)
 
         await Tasks.yield_task(XboxJoystick.EVENT_LOOP_DELAY)
+
