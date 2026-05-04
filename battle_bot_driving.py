@@ -7,8 +7,8 @@ from time import sleep
 async def driving(hummingbird, joystick):
     running = True
 
-    #hummingbird_driver = HummingbirdL298nDualMotorDriver(hummingbird)
-    hummingbird_driver = HummingbirdTb6612fngDualMotorDriver(hummingbird)
+    hummingbird_driver = HummingbirdL298nDualMotorDriver(hummingbird)
+    #hummingbird_driver = HummingbirdTb6612fngDualMotorDriver(hummingbird)
 
     while running:
         # ----------------------------------------------------------------------------------------------------------------------
