@@ -14,21 +14,21 @@ async def driving(hummingbird, joystick):
         # ----------------------------------------------------------------------------------------------------------------------
         #  driving
         # ----------------------------------------------------------------------------------------------------------------------
-        #FACTOR = 0.75
-        VOLTAGE_FACTOR = 1.0
+        VOLTAGE_FACTOR = 0.25
 
         left_speed = right_speed = round(-joystick.state.left_y() * 100, 2) + 0.0
-
-        # direction from joystick.state.right_x()
-        #speed_multiplier = 1.0 - (abs(joystick.state.right_x()) * FACTOR)
 
         left_speed = left_speed * VOLTAGE_FACTOR
         right_speed = right_speed * VOLTAGE_FACTOR
 
-        #if joystick.state.right_x() >= 0.0:
-        #    right_speed = right_speed * speed_multiplier  # turn right (slower right wheel)
-        #else:
-        #    left_speed = left_speed * speed_multiplier  # turn left (slower left wheel)
+        direction = joystick.state.right_x()
+
+        if direction == 0.0:
+            pass
+        elif direction > 0.0:
+            print("Turn Right")
+        else:
+            print("Turn Left")
 
         hummingbird_driver.move(left_speed, right_speed)
 

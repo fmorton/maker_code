@@ -15,7 +15,7 @@ async def driving(hummingbird, joystick):
         #  driving
         # ----------------------------------------------------------------------------------------------------------------------
         FACTOR = 0.75
-        VOLTAGE_FACTOR = 1.0
+        VOLTAGE_FACTOR = 0.25
 
         left_speed = right_speed = round(-joystick.state.left_y() * 100, 2) + 0.0
 
