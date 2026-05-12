@@ -20,11 +20,11 @@ async def events(joystick, debugging=False):
         # ----------------------------------------------------------------------------------------------------------------------
         if debugging:
             extra_state_string = ""
-            #extra_state_string += f"{left_weapon:8.2f}"
-            #extra_state_string += f"{right_weapon:8.2f}"
-            #extra_state_string += f"{left_speed:8.2f}"
-            #extra_state_string += f"{right_speed:8.2f}"
-            #extra_state_string += f"{speed_multiplier:8.2f}"
+            # extra_state_string += f"{left_weapon:8.2f}"
+            # extra_state_string += f"{right_weapon:8.2f}"
+            # extra_state_string += f"{left_speed:8.2f}"
+            # extra_state_string += f"{right_speed:8.2f}"
+            # extra_state_string += f"{speed_multiplier:8.2f}"
 
             joystick.state.print_state_string(extra_state_string)
 

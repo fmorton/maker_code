@@ -4,6 +4,7 @@ from robot.tasks import Tasks
 from robot.xbox_joystick import XboxJoystick
 from time import sleep
 
+
 def event_manager(event_queue, debugging=False):
     joystick = XboxJoystick().connect()
 
@@ -20,7 +21,7 @@ def event_manager(event_queue, debugging=False):
             if event.type == pygame.QUIT:
                 running = False
 
-        #sleep(XboxJoystick.EVENT_LOOP_DELAY)
+        # sleep(XboxJoystick.EVENT_LOOP_DELAY)
         # ----------------------------------------------------------------------------------------------------------------------
         #  state string
         # ----------------------------------------------------------------------------------------------------------------------

@@ -1,9 +1,11 @@
 from robot.hummingbird import Hummingbird
 from robot.hummingbird_l298n_dual_motor_driver import HummingbirdL298nDualMotorDriver
-from robot.hummingbird_tb6612fng_dual_motor_driver import HummingbirdTb6612fngDualMotorDriver
+from robot.hummingbird_tb6612fng_dual_motor_driver import (
+    HummingbirdTb6612fngDualMotorDriver,
+)
 from time import sleep
 
-#hummingbird_driver = HummingbirdL298nDualMotorDriver(hummingbird)
+# hummingbird_driver = HummingbirdL298nDualMotorDriver(hummingbird)
 from robot.hummingbird_dual_motor_driver import HummingbirdDualMotorDriver
 
 
@@ -38,6 +40,7 @@ class HummingbirdTb6612fngDualMotorDriver2(HummingbirdDualMotorDriver):
         else:
             self.robot.tri_led(2, 100, 0, abs(speed))
 
+
 hummingbird = Hummingbird()
 hummingbird.tri_led(1, 50, 50, 50)
 sleep(1.0)
@@ -59,4 +62,3 @@ hummingbird_driver.move_right_motor(-40)
 sleep(1.0)
 
 hummingbird_driver.stop()
-

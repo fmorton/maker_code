@@ -9,12 +9,12 @@ def driving(hummingbird, event_queue):
     while running:
         joystick_state = event_queue.get()
 
-        #speed = -joystick_state.left_y() * 100
+        # speed = -joystick_state.left_y() * 100
 
-        #if speed != 0.0:
+        # if speed != 0.0:
         #   print("Speed", speed)
 
-        #sleep(XboxJoystick.EVENT_LOOP_DELAY)
+        # sleep(XboxJoystick.EVENT_LOOP_DELAY)
         # ----------------------------------------------------------------------------------------------------------------------
         #  exit
         # ----------------------------------------------------------------------------------------------------------------------
@@ -32,7 +32,9 @@ def driving(hummingbird, event_queue):
         speed_multiplier = 1.0 - (abs(joystick_state.right_x()) * FACTOR)
 
         if joystick_state.right_x() >= 0.0:
-            right_speed = right_speed * speed_multiplier  # turn right (slower right wheel)
+            right_speed = (
+                right_speed * speed_multiplier
+            )  # turn right (slower right wheel)
         else:
             left_speed = left_speed * speed_multiplier  # turn left (slower left wheel)
 
@@ -44,7 +46,6 @@ def driving(hummingbird, event_queue):
         left_weapon = joystick_state.left_trigger() * 100.0
         right_weapon = joystick_state.right_trigger() * 100.0
 
+        # sleep(XboxJoystick.EVENT_LOOP_DELAY)
 
-        #sleep(XboxJoystick.EVENT_LOOP_DELAY)
-
-        #return True
+        # return True

@@ -16,7 +16,7 @@ if __name__ == "__main__":
 
     processes.create_process(event_manager, (event_queue, False))
     processes.create_process(driving, (hummingbird, event_queue))
-    #processes.create_process(weapons, (hummingbird, joystick))
-    #processes.create_process(extras, (hummingbird, joystick))
+    # processes.create_process(weapons, (hummingbird, joystick))
+    # processes.create_process(extras, (hummingbird, joystick))
 
     processes.run()

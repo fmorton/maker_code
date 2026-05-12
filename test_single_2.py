@@ -14,7 +14,7 @@ for i in range(10):
     # IN1=IN2: Motor A stops (brake).
     # IN3=HIGH, IN4=LOW: Motor B spins forward.
     # IN3=LOW, IN4=HIGH: Motor B spins backward.
-    # IN3=IN4: Motor B stops (brake). 
+    # IN3=IN4: Motor B stops (brake).
 
     speed = 75
     sleep_amount = 0.5
@@ -51,5 +51,3 @@ for i in range(10):
     hummingbird.tri_led(1, 0, 0, 0)
     hummingbird.tri_led(2, 0, 0, 0)
     sleep(sleep_amount)
-
-
