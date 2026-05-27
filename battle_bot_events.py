@@ -1,23 +1,23 @@
 import pygame
 
 from robot.tasks import Tasks
-from robot.xbox_joystick import XboxJoystick
+from robot.xbox_controller import XboxController
 from time import sleep
 
 
-async def events(joystick, debugging=False):
+async def events(controller, debugging=False):
     running = True
 
     while running:
         for event in pygame.event.get():
-            joystick.state.event(event, debugging)
+            controller.state.event(event, debugging)
 
             if event.type == pygame.QUIT:
                 running = False
 
-        # ----------------------------------------------------------------------------------------------------------------------
+        # --------------------------------------------------------------------------------------------------------------
         #  state string
-        # ----------------------------------------------------------------------------------------------------------------------
+        # --------------------------------------------------------------------------------------------------------------
         if debugging:
             extra_state_string = ""
             # extra_state_string += f"{left_weapon:8.2f}"
@@ -26,8 +26,8 @@ async def events(joystick, debugging=False):
             # extra_state_string += f"{right_speed:8.2f}"
             # extra_state_string += f"{speed_multiplier:8.2f}"
 
-            joystick.state.print_state_string(extra_state_string)
+            controller.state.print_state_string(extra_state_string)
 
-        joystick.tick(30)
+        controller.tick(30)
 
-        await Tasks.yield_task(XboxJoystick.EVENT_LOOP_DELAY)
+        await Tasks.yield_task(XboxController.EVENT_LOOP_DELAY)

@@ -1,12 +1,12 @@
 import pygame
 
 from robot.tasks import Tasks
-from robot.xbox_joystick import XboxJoystick
+from robot.xbox_controller import XboxController
 from time import sleep
 
 
 def event_manager(event_queue, debugging=False):
-    joystick = XboxJoystick().connect()
+    controller = XboxController().connect()
 
     print("Battlebot Ready")
 
@@ -14,17 +14,17 @@ def event_manager(event_queue, debugging=False):
 
     while running:
         for event in pygame.event.get():
-            joystick.state.event(event, debugging)
+            controller.state.event(event, debugging)
 
-            event_queue.put(joystick.state)
+            event_queue.put(controller.state)
 
             if event.type == pygame.QUIT:
                 running = False
 
-        # sleep(XboxJoystick.EVENT_LOOP_DELAY)
-        # ----------------------------------------------------------------------------------------------------------------------
+        # sleep(XboxController.EVENT_LOOP_DELAY)
+        # --------------------------------------------------------------------------------------------------------------
         #  state string
-        # ----------------------------------------------------------------------------------------------------------------------
+        # --------------------------------------------------------------------------------------------------------------
         if debugging:
             extra_state_string = ""
             extra_state_string += f"{left_weapon:8.2f}"
@@ -33,4 +33,4 @@ def event_manager(event_queue, debugging=False):
             extra_state_string += f"{right_speed:8.2f}"
             extra_state_string += f"{speed_multiplier:8.2f}"
 
-            joystick_state.print_state_string(extra_state_string)
+            controller_state.print_state_string(extra_state_string)

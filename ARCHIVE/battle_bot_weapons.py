@@ -1,15 +1,15 @@
 from robot.tasks import Tasks
-from robot.xbox_joystick import XboxJoystick
+from robot.xbox_controller import XboxController
 
 
-async def weapons(hummingbird, joystick):
+async def weapons(hummingbird, controller):
     running = True
 
     while running:
-        if joystick.state.left_trigger():
-            print("Shoot left trigger", joystick.state.left_trigger())
+        if controller.state.left_trigger():
+            print("Shoot left trigger", controller.state.left_trigger())
 
-        if joystick.state.right_trigger():
-            print("Shoot right trigger", joystick.state.right_trigger())
+        if controller.state.right_trigger():
+            print("Shoot right trigger", controller.state.right_trigger())
 
-        await Tasks.yield_task(XboxJoystick.EVENT_LOOP_DELAY)
+        await Tasks.yield_task(XboxController.EVENT_LOOP_DELAY)

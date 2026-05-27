@@ -1,4 +1,4 @@
-# --------------------------------------------------------------
+# ------------------------------------------------------
 # Author                  Raghunath J, revised by Bambi Brewer
 #                         and Kristina Lauwers
 # Last Edit Date          11/20/2019
@@ -15,13 +15,13 @@
 # The Finch class also extends the Microbit class. This class
 # similarly includes function to control the inputs and outputs
 # of the Finch robot.
-# --------------------------------------------------------------
+# ------------------------------------------------------
 import sys
 import time
 
 import urllib.request
 
-# --------------------------------------------------------------
+# ------------------------------------------------------
 # Constants
 
 CHAR_FLASH_TIME = 0.3  # Character Flash time
@@ -54,9 +54,9 @@ class Microbit:
 
     symbolvalue = None
 
-    # ---------------------------------------------------------------------------------
+    # -------------------------------------------------------------------------
     # UTILITY FUNCTIONS
-    # ---------------------------------------------------------------------------------
+    # -------------------------------------------------------------------------
     def __init__(self, device="A"):
         """Called when the class is initialized."""
 
@@ -175,9 +175,9 @@ class Microbit:
 
         return number
 
-    # ---------------------------------------------------------------------
+    # -------------------------------------------------------------
     # OUTPUTS MICRO BIT
-    # ---------------------------------------------------------------------
+    # -------------------------------------------------------------
     def setDisplay(self, LEDlist):
         """Set Display of the LED Array on microbit with the given input LED
         list of 0's and 1's."""
@@ -274,9 +274,9 @@ class Microbit:
         response = self._send_httprequest(http_request)
         return response
 
-    # -----------------------------------------------------------------------------
+    # ---------------------------------------------------------------------
     # INPUTS MICROBIT
-    # -----------------------------------------------------------------------------
+    # ---------------------------------------------------------------------
     def _getXYZvalues(self, sensor, intResult):
         """Return the X, Y, and Z values of the given sensor."""
 
@@ -415,9 +415,9 @@ class Microbit:
         self.symbolvalue = [0] * 25
         return response
 
-    # -------------------------------------------------------------------------
+    # -----------------------------------------------------------------
     # SEND HTTP REQUESTS
-    # -------------------------------------------------------------------------
+    # -----------------------------------------------------------------
     def _send_httprequest(self, http_request):
         """Send an HTTP request and return the result."""
         try:
@@ -649,9 +649,9 @@ class Hummingbird(Microbit):
     """Hummingbird Bit Class includes the control of the outputs and inputs
     present on the Hummingbird Bit."""
 
-    # -------------------------------------------------------------------------
+    # -----------------------------------------------------------------
     # UTILITY FUNCTIONS
-    # -------------------------------------------------------------------------
+    # -----------------------------------------------------------------
     def __init__(self, device="A"):
         """Class initializer. Specify device letter A, B or C."""
 
@@ -739,9 +739,9 @@ class Hummingbird(Microbit):
             servo_value_c = int((servo_value * 23 / 100) + 122)
         return servo_value_c
 
-    # -------------------------------------------------------------------------
+    # -----------------------------------------------------------------
     # HUMMINGBIRD BIT OUTPUT
-    # -------------------------------------------------------------------------
+    # -----------------------------------------------------------------
     def led(self, port, intensity):
         """Set LED  of a certain port requested to a valid intensity."""
 
@@ -812,9 +812,9 @@ class Hummingbird(Microbit):
         response = self.send_httprequest("rotation", port, speed_c)
         return response
 
-    # -------------------------------------------------------------------------
+    # -----------------------------------------------------------------
     # HUMMINGBIRD BIT INPUT
-    # -------------------------------------------------------------------------
+    # -----------------------------------------------------------------
     def getSensor(self, port):
         """Read the value of the sensor attached to a certain port.
         If the port is not valid, it returns -1."""
@@ -867,9 +867,9 @@ class Hummingbird(Microbit):
         voltage_value = response * VOLTAGE_FACTOR
         return voltage_value
 
-    # -------------------------------------------------------------------------
+    # -----------------------------------------------------------------
     # SEND HTTP REQUESTS
-    # -------------------------------------------------------------------------
+    # -----------------------------------------------------------------
     def send_httprequest_in(self, peri, port):
         """Send HTTP requests for Hummingbird bit inputs."""
 

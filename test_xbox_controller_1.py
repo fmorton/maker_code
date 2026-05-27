@@ -3,23 +3,23 @@ import sys
 import time
 
 pygame.init()
-pygame.joystick.init()
+pygame.controller.init()
 
-# Get the number of connected joysticks
-joystick_count = pygame.joystick.get_count()
-print(f"Number of joysticks: {joystick_count}")
+# Get the number of connected controllers
+controller_count = pygame.controller.get_count()
+print(f"Number of controllers: {controller_count}")
 
-if joystick_count == 0:
+if controller_count == 0:
     print("No Joystick Available")
     exit(200)
 
-# Initialize and store joystick objects
-joysticks = []
-for i in range(joystick_count):
-    joystick = pygame.joystick.Joystick(i)
-    joystick.init()
-    joysticks.append(joystick)
-    print(f"Initialized joystick {i}: {joystick.get_name()}")
+# Initialize and store controller objects
+controllers = []
+for i in range(controller_count):
+    controller = pygame.controller.Joystick(i)
+    controller.init()
+    controllers.append(controller)
+    print(f"Initialized controller {i}: {controller.get_name()}")
 
 screen = pygame.display.set_mode((600, 400))
 pygame.display.set_caption("Pygame Joystick Test")

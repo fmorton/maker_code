@@ -4,19 +4,19 @@ from battle_bot_extras import extras
 from battle_bot_weapons import weapons
 from robot.tasks import Tasks
 from robot.hummingbird import Hummingbird
-from robot.xbox_joystick import XboxJoystick
+from robot.xbox_controller import XboxController
 
 
 hummingbird = Hummingbird("A")
-joystick = XboxJoystick().connect()
+controller = XboxController().connect()
 
 print("Battlebot Ready")
 
 tasks = Tasks()
 
-tasks.create_task(events(joystick, False))
-tasks.create_task(driving(hummingbird, joystick))
-tasks.create_task(weapons(hummingbird, joystick))
-tasks.create_task(extras(hummingbird, joystick))
+tasks.create_task(events(controller, True))
+tasks.create_task(driving(hummingbird, controller))
+tasks.create_task(weapons(hummingbird, controller))
+tasks.create_task(extras(hummingbird, controller))
 
 tasks.run()

@@ -15,13 +15,13 @@ from robot.hummingbird import Hummingbird
 hummingbird = Hummingbird("A")
 
 pygame.init()
-pygame.joystick.init()
+pygame.controller.init()
 
-while pygame.joystick.get_count() == 0:
-    print("Waiting for an xbox joystick")
+while pygame.controller.get_count() == 0:
+    print("Waiting for an xbox controller")
     time.sleep(0.5)
 
-joystick = pygame.joystick.Joystick(0)
+controller = pygame.controller.Joystick(0)
 
 # screen = pygame.display.set_mode((600, 400))
 # pygame.display.set_caption("Pygame Joystick Test")

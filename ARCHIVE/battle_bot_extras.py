@@ -1,15 +1,15 @@
 from robot.tasks import Tasks
-from robot.xbox_joystick import XboxJoystick
+from robot.xbox_controller import XboxController
 
 
-async def extras(hummingbird, joystick):
+async def extras(hummingbird, controller):
     running = True
 
     while running:
-        if joystick.state.button_down_milliseconds(XboxJoystick.BUTTON_A):
+        if controller.state.button_down_milliseconds(XboxController.BUTTON_A):
             print(
                 "Extra button A",
-                joystick.state.button_down_milliseconds(XboxJoystick.BUTTON_A),
+                controller.state.button_down_milliseconds(XboxController.BUTTON_A),
             )
 
-        await Tasks.yield_task(XboxJoystick.EVENT_LOOP_DELAY)
+        await Tasks.yield_task(XboxController.EVENT_LOOP_DELAY)
